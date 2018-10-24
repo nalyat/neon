@@ -72,6 +72,10 @@ if [ -z $MKLROOT ] || [ $VERSION_LINE -lt $VERSION_MATCH ]; then
   FindLibrary $1
   MKLROOT=$PWD/`echo $LOCALMKL | sed -e 's/lib.*$//'`
   echo MKLML dependencies installed: MKLROOT=${MKLROOT}
+else
+	export DST=$MKLROOT
+	FindLibrary $1
+  echo MKLML dependencies: MKLROOT=${MKLROOT}
 fi
 
 # Check what MKL lib we have in MKLROOT
